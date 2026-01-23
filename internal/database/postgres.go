@@ -13,9 +13,15 @@ func Connect() *sql.DB {
 	if dsn == "" {
 		dsn = os.Getenv("POSTGRES_URL")
 	}
+	if dsn == "" {
+		dsn = os.Getenv("POSTGRES_URI")
+	}
+	if dsn == "" {
+		dsn = os.Getenv("POSTGRES_CONNECTION_STRING")
+	}
 
 	if dsn == "" {
-		log.Fatal("DATABASE_URL or POSTGRES_URL is not set. Please check your Zeabur environment variables.")
+		log.Fatal("Database connection string not found. Please check your Zeabur environment variables (DATABASE_URL, POSTGRES_URL, POSTGRES_URI, or POSTGRES_CONNECTION_STRING).")
 	}
 
 	db, err := sql.Open("pgx", dsn)
