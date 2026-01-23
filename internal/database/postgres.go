@@ -10,9 +10,12 @@ import (
 
 func Connect() *sql.DB {
 	dsn := os.Getenv("DATABASE_URL")
+	if dsn == "" {
+		dsn = os.Getenv("POSTGRES_URL")
+	}
 
 	if dsn == "" {
-		log.Fatal("DATABASE_URL is not set")
+		log.Fatal("DATABASE_URL or POSTGRES_URL is not set. Please check your Zeabur environment variables.")
 	}
 
 	db, err := sql.Open("pgx", dsn)
