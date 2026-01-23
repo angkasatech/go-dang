@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	"warehouse-app/internal/category"
-	"warehouse-app/internal/database"
-	"warehouse-app/internal/router"
+	"go-dang/internal/category"
+	"go-dang/internal/database"
+	"go-dang/internal/router"
 )
 
 func main() {

@@ -1,7 +1,7 @@
 package router
 
 import (
-	"warehouse-app/internal/category"
+	"go-dang/internal/category"
 
 	"github.com/go-chi/chi/v5"
 )
