@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"go-dang/internal/category"
 	"go-dang/internal/database"
@@ -18,6 +19,16 @@ func main() {
 
 	r := router.Setup(handler)
 
-	log.Println("Server running on :8080")
-	http.ListenAndServe(":8080", r)
+	// Get port from environment variable, default to 8080
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
+	addr := ":" + port
+	log.Printf("Server running on %s", addr)
+
+	if err := http.ListenAndServe(addr, r); err != nil {
+		log.Fatalf("Server failed to start: %v", err)
+	}
 }

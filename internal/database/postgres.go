@@ -38,7 +38,9 @@ func Connect() *sql.DB {
 	CREATE TABLE IF NOT EXISTS categories (
 		id SERIAL PRIMARY KEY,
 		name TEXT NOT NULL,
-		description TEXT
+		description TEXT,
+		created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+		updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 	);`
 
 	_, err = db.Exec(createTableQuery)
