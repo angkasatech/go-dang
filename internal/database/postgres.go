@@ -21,7 +21,7 @@ func Connect() *sql.DB {
 	}
 
 	if dsn == "" {
-		log.Fatal("Database connection string not found. Please check your Zeabur environment variables (DATABASE_URL, POSTGRES_URL, POSTGRES_URI, or POSTGRES_CONNECTION_STRING).")
+		log.Fatal("Database connection string not found. Please set DATABASE_URL (or POSTGRES_URL, POSTGRES_URI, or POSTGRES_CONNECTION_STRING). For Supabase, copy the project's Connection String (URI) and set it in your hosting provider (e.g. Railway Project Variables).")
 	}
 
 	db, err := sql.Open("pgx", dsn)
